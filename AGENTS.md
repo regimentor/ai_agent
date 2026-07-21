@@ -1,11 +1,14 @@
-# Инструкции для агента
+# Agent Instructions
 
-## Обязательно в каждом новом чате
+## Required in Every New Chat
 
-1. **Сразу** прочитай и следуй скиллу `project-info`:
-   - путь: `.agents/skills/project-info/SKILL.md`
-   - либо вызови `/project-info`
-2. Не начинай работу по репозиторию, пока скилл не загружен в контекст.
-3. После загрузки скилла при работе с конкретным крейтом читай его `crates/<name>/AGENT.md`.
+1. **Immediately** read and follow the `project-info` skill:
+   - path: `.agents/skills/project-info/SKILL.md`
+   - or invoke `/project-info`
+2. Do not start working on the repository until the skill has been loaded into context.
+3. After loading the skill, read `crates/<name>/AGENT.md` when working on a specific crate.
 
-Этот файл (`AGENTS.md`) — always-on правило репозитория. Скилл `project-info` — полный контекст проекта; не дублируй его здесь.
+This file (`AGENTS.md`) is an always-on repository rule. The `project-info`
+skill is the canonical living project memory; do not duplicate it here. When
+asked for a pre-commit memory update, follow its memory synchronization workflow
+before committing.

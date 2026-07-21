@@ -1,29 +1,30 @@
-# crate `cli`
+# Crate `cli`
 
-## Назначение
+## Purpose
 
-Бинарная точка входа workspace: UX агента — аргументы CLI, интерактивный I/O (REPL/чат), вывод пользователю.
+The binary entry point of the workspace. It provides the agent UX: CLI arguments, interactive I/O (REPL/chat), and user-facing output.
 
-Package: `cli` · запуск: `cargo run -p cli`
+Package: `cli` · run with: `cargo run -p cli`
 
-## Границы ответственности
+## Responsibilities
 
-**Делает:**
-- TUI интерфейс для взаимодействия пользователя и агента
+**Does:**
 
-**Не делает:**
-- Не работает с базой данных
+- provides a TUI for interaction between the user and the agent.
 
+**Does not:**
 
-## Текущее состояние
+- interact with a database.
 
-Каркас: `src/main.rs` печатает `Hello, world!`. Зависимостей нет.
+## Current State
 
-## Зависимости
+Scaffold only: `src/main.rs` prints `Hello, world!`. There are no dependencies.
 
-Пока нет. Когда появятся `core` / другие крейты — подключать через path (`{ path = "../…" }`) или workspace deps.
+## Dependencies
 
-## Команды
+None yet. When `core` or other crates are added, depend on them through a path (`{ path = "../…" }`) or workspace dependencies.
+
+## Commands
 
 ```bash
 cargo run -p cli
