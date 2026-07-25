@@ -59,7 +59,7 @@ Keep responsibilities separated as the project grows:
 | Crate | Responsibility |
 |---|---|
 | `cli` | CLI/TUI UX, arguments, REPL/IO, entry point |
-| `core` (planned) | Agent loop, state, budgets, stopping policy |
+| `domain` (planned) | Agent loop, state, budgets, stopping policy |
 | `tools` (planned) | Tool schemas, implementations, side effects |
 | Other crates | Providers, memory, and other focused capabilities as needed |
 

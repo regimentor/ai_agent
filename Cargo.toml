@@ -1,4 +1,4 @@
 [workspace]
 resolver = "2"
-members = ["crates/cli"]
+members = ["crates/cli", "crates/domain"]
 
