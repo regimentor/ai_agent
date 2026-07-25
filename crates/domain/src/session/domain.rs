@@ -14,7 +14,7 @@ pub struct DialogMessage {
 }
 
 pub struct Turn {
-    request_id: String,
+    pub request_id: String,
 }
 
 enum State {
@@ -72,17 +72,17 @@ impl Session {
                 request_id: current_request_id,
                 user_input,
             } if *current_request_id == request_id => {
-                self.history.push(DialogMessage {
-                    role: DialogRole::Assistant,
-                    content: completion,
-                });
-
                 if let Some(user_input) = user_input {
                     self.history.push(DialogMessage {
                         role: DialogRole::User,
                         content: user_input.clone(),
                     });
                 }
+
+                self.history.push(DialogMessage {
+                    role: DialogRole::Assistant,
+                    content: completion,
+                });
 
                 self.state = State::Idle;
                 Ok(())
