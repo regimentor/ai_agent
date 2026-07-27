@@ -1,13 +1,20 @@
 use async_trait::async_trait;
+use derive_more::Display;
 use tokio_util::sync::CancellationToken;
 
 use crate::session::domain::DialogMessage;
 
+#[derive(Debug, Display)]
 pub enum Error {
+    #[display("Network error: {_0}")]
     NetworkError(String),
+    #[display("Invalid response: {_0}")]
     InvalidResponse(String),
+    #[display("Protocol error: {_0}")]
     ProtocolError(String),
+    #[display("Other error: {_0}")]
     Other(String),
+    #[display("Request timed out")]
     Timeout,
 }
 

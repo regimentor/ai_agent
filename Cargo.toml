@@ -1,4 +1,8 @@
 [workspace]
 resolver = "2"
-members = ["crates/cli", "crates/domain"]
+members = ["crates/cli", "crates/domain", "crates/llm_provider"]
+
+
+[workspace.dependencies]
+derive_more = {version = "2.1.1", features = ["full"]}
 

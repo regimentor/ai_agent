@@ -1,5 +1,4 @@
 pub mod llm_provider;
-pub mod open_ai_compatible;
 pub mod session;
 
 #[derive(Debug)]
