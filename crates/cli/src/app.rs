@@ -8,7 +8,8 @@ use crossterm::{
 use ratatui::{
     DefaultTerminal, Frame,
     layout::{Constraint, Layout, Position},
-    widgets::{Block, Paragraph},
+    style::{Color, Style},
+    widgets::{Block, BorderType, Borders, Paragraph},
 };
 
 enum InputMode {
@@ -26,6 +27,10 @@ impl App {
     pub fn new() -> Self {
         let user_input = vec![
             String::from("Hello, world!"),
+            String::from("This is a test."),
+            String::from("This is a test."),
+            String::from("This is a test."),
+            String::from("This is a test."),
             String::from("This is a test."),
         ];
         App {
@@ -98,13 +103,39 @@ impl App {
     }
 
     fn render(&self, frame: &mut Frame) {
-        let layout = Layout::vertical([Constraint::Length(4), Constraint::Length(1)]);
-        let [input_area, mode_info] = frame.area().layout(&layout);
+        let [header, main, footer] = Layout::vertical([
+            Constraint::Length(1),
+            Constraint::Min(1),
+            Constraint::Length(1),
+        ])
+        .areas(frame.area());
+
+        let input_height = if self.user_input.is_empty() {
+            1
+        } else {
+            let _len = self.user_input.len() as u16;
+
+            _len + 2 // Add 2 for the borders
+        };
+
+        let [history, input_area, mode_info] = Layout::vertical([
+            Constraint::Min(1),
+            Constraint::Length(input_height),
+            Constraint::Length(1),
+        ])
+        .areas(main);
 
         let input_text = self.user_input.join("\n");
 
         frame.render_widget(
-            Paragraph::new(input_text).block(Block::bordered().title("Input message")),
+            Paragraph::new(input_text)
+                .style(Style::default().bg(Color::DarkGray))
+                .block(
+                    Block::new()
+                        .borders(Borders::ALL)
+                        .border_type(BorderType::Rounded)
+                        .title("Input message"),
+                ),
             input_area,
         );
 
